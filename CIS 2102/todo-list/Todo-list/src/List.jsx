@@ -1,10 +1,10 @@
 import Task from "./Task";
 
-function List({ entries }) {
+function List({ entries, setTaskList }) {
   return (
     <ul>
       {entries.map((entry, i) => (
-        <Task entry={entry} key={i} />
+        <Task entry={entry} key={i} setTaskList={setTaskList} />
       ))}
     </ul>
   );

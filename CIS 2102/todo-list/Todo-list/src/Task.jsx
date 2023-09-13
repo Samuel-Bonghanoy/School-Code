@@ -1,8 +1,13 @@
 import styles from "./Task.module.css";
-function Task({ entry }) {
+function Task({ entry, setTaskList }) {
   return (
     <li>
-      <input type="checkbox" />
+      <input
+        onChange={() =>
+          setTaskList((li) => li.filter((task) => task !== entry))
+        }
+        type="checkbox"
+      />
       <p>{entry}</p>
     </li>
   );

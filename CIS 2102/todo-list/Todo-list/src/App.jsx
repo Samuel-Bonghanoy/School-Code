@@ -15,11 +15,15 @@ function App() {
           }}
           placeholder="Input Task"
         ></input>
-        <button onClick={setTaskList((list) => [...list, entry])}>
+        <button
+          onClick={() => {
+            if (entry) setTaskList((list) => [...list, entry]);
+          }}
+        >
           Submit
         </button>
       </div>
-      <List entries={taskList} />
+      <List entries={taskList} setTaskList={setTaskList} />
     </div>
   );
 }
