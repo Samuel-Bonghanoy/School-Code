@@ -46,9 +46,25 @@ int insertFirst(int arr[], int* count, int elem){
   }
 }
 
-int insertAtPos(int arr[], int* count, int elem, int pos);
-int removeLast(int arr[], int* count);
-int removeFirst(int arr[], int* count);
+int insertAtPos(int arr[], int* count, int elem, int pos){
+  if(*count != MAX || count - 1 < pos){
+    int x;
+    for(x = *count; x > pos; x--){
+      arr[x] = arr[x - 1];
+    }
+
+    arr[pos] = elem;
+    (*count)++;
+  }
+}
+
+int removeLast(int arr[], int* count){
+  if(*count != 0) (*count)--;
+}
+
+int removeFirst(int arr[], int* count){
+  if(*count)
+}
 int removeAtPos(int arr[], int* count, int pos);
 int removeElem(int arr[], int* count, int elem);
 
@@ -72,6 +88,10 @@ int main(void)
   insertFirst(arr, &count, 1);
   display(arr, count);
   printf("%d\n", searchElem(arr, count, 3));
+  insertAtPos(arr, &count, 18, 3);
+  display(arr, count);
+  insertAtPos(arr, &count, 19, 0);
+  display(arr, count);
   
 
   return 0;
