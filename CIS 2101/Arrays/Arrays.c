@@ -178,7 +178,7 @@ int main(void)
   // display(arr2, 4);
 
   // printf("%d\n", isSortedAscending(arr,count));
-  // printf("%d\n", isSortedAscending(arr2,4));
+  printf("%d\n", isSortedAscending(arr2,4));
 
   moveSmallestToFirst(arr, count);
   display(arr, count);
