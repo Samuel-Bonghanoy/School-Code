@@ -65,13 +65,14 @@ int main(void)
 
   initialize(arr, &count);
   insertLast(arr, &count, 5);
-  insertLast(arr, &count, 5);
+  insertLast(arr, &count, 3);
   insertLast(arr, &count, 5);
   insertLast(arr, &count, 5);
   display(arr, count);
   insertFirst(arr, &count, 1);
   display(arr, count);
-  // printf("start");
+  printf("%d\n", searchElem(arr, count, 3));
+  
 
   return 0;
 }
