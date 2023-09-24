@@ -118,7 +118,7 @@ int main(int argc, char*argv[]){
            printf("\n\t\tID: ");
            scanf("%d", &newStud.idNum);
            printf("\n\t\tNAME: ");
-           printf("test");
+        //    printf("test");
            fflush(stdin);
            fgets(newStud.name, sizeof(newStud.name), stdin);
            fflush(stdin);
