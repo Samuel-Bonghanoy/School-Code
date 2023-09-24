@@ -49,7 +49,7 @@ int main(int argc, char*argv[]){
     
     FILE *fp = fopen("LinkedFiles.txt", "w+");
     NodePtr head = NULL;
-
+    printf("test");
     student newStud;
 
     int action=0, value=0, pos=0, ID, count=0; 
