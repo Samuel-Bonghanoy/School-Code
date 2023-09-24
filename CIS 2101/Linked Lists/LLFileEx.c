@@ -59,6 +59,7 @@ int main(int argc, char*argv[]){
     printf("\n\t [1] insertFront");
     printf("\n\t [2] insertRear");
     printf("\n\t [3] insertAt");
+    printf("yes");
     printf("\n\t [4] deleteFront");
     printf("\n\t [5] deleteAt");
     printf("\n\t [6] deleteRear");
