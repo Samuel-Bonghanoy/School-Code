@@ -63,12 +63,17 @@ function Form({ contacts, setContacts }) {
   };
 
   const handleEditContact = (e) => {
+    e.preventDefault();
+
     if (!id) {
       setEditing(false);
       return;
     }
 
-    e.preventDefault();
+    if (!contacts.some((contact) => contact.id === id)) {
+      setEditing(false);
+      return;
+    }
 
     const ret = contacts.filter((c) => c.id !== id);
 
