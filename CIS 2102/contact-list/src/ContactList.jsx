@@ -24,7 +24,10 @@ function ContactList({ contacts, setContacts }) {
                   <strong>Age:</strong> {contact.age}
                 </p>
                 <p>
-                  <strong>ID:</strong> {contact.name}
+                  <strong>ID:</strong> {contact.id}
+                </p>
+                <p>
+                  <strong>Contact Number:</strong> {contact.contactNumber}
                 </p>
                 <p>
                   <strong>Course:</strong> {contact.course}

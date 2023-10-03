@@ -10,13 +10,12 @@ function Form({ contacts, setContacts }) {
     course: "",
   });
 
-  const [editContact, setEditContact] = useState({
-    name: "",
-    age: "",
-    contactNumber: "",
-    id: "",
-    course: "",
-  });
+  const [editName, setEditName] = useState("");
+  const [editAge, setEditAge] = useState("");
+  const [editContactNumber, setEditContactNumber] = useState("");
+  const [editCourse, setEditCourse] = useState("");
+
+  const [id, setId] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -63,7 +62,35 @@ function Form({ contacts, setContacts }) {
     });
   };
 
-  const handleEditContact = (id) => {};
+  const handleEditContact = (e) => {
+    if (!id) {
+      setEditing(false);
+      return;
+    }
+
+    e.preventDefault();
+
+    const ret = contacts.filter((c) => c.id !== id);
+
+    setContacts([
+      ...ret,
+      {
+        name: editName,
+        age: editAge,
+        contactNumber: editContactNumber,
+        id,
+        course: editCourse,
+      },
+    ]);
+
+    setEditAge(null);
+    setEditName(null);
+    setEditContactNumber(null);
+    setEditCourse(null);
+    setId(null);
+
+    setEditing(false);
+  };
 
   return (
     <div className="mx-auto w-6/12">
@@ -133,39 +160,50 @@ function Form({ contacts, setContacts }) {
               type="text"
               name="ID"
               placeholder="ID to edit"
-              value={newContact.id}
-              onChange={handleEdit}
+              value={id}
+              onChange={(e) => setId(e.target.value)}
             />
-            {editContact.id && (
+            {id && (
               <>
                 <input
                   className="border p-2 rounded"
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={newContact.name}
-                  onChange={handleEdit}
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
                 />
                 <input
                   className="border p-2 rounded"
                   type="text"
                   name="age"
                   placeholder="Age"
-                  value={newContact.age}
-                  onChange={handleEdit}
+                  value={editAge}
+                  onChange={(e) => setEditAge(e.target.value)}
                 />
                 <input
                   className="border p-2 rounded"
                   type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={newContact.course}
-                  onChange={handleEdit}
+                  name="contactNumber"
+                  placeholder="Contact Number"
+                  value={editContactNumber}
+                  onChange={(e) => setEditContactNumber(e.target.value)}
+                />
+                <input
+                  className="border p-2 rounded"
+                  type="text"
+                  name="course"
+                  placeholder="Course"
+                  value={editCourse}
+                  onChange={(e) => setEditCourse(e.target.value)}
                 />
               </>
             )}
 
-            <button className="bg-green-500 text-white px-4 py-2 rounded-full border border-green-700 hover:bg-green-700 ">
+            <button
+              onClick={handleEditContact}
+              className="bg-green-500 text-white px-4 py-2 rounded-full border border-green-700 hover:bg-green-700 "
+            >
               Save
             </button>
           </form>
