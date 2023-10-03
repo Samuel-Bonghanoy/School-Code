@@ -102,11 +102,13 @@ function App() {
       </div>
       <ul className="bg-green-300 w-6/12 text-center mx-auto mt-5">
         {contacts.map((contact) => {
-          console.log(contacts);
           return (
-            <li key={contact.id}>
-              {contact.name} - {contact.age} years old - ID#{contact.id} -{" "}
-              {contact.course}
+            <li key={contact.id} className="flex flex-col">
+              <p>Name: {contact.name}</p> - {contact.age} years old - ID#
+              <p>Age: {contact.age} Y.O</p> - {contact.age} years old - ID#
+              <p>ID: {contact.name}</p> - {contact.age} years old - ID#
+              <p>Name: {contact.name}</p> - {contact.age} years old - ID#
+              {contact.id} - {contact.course}
               <button onClick={() => handleDeleteContact(contact.id)}>
                 Delete
               </button>
