@@ -1,18 +1,23 @@
 // import { useState } from "react";
 import "./App.css";
 // import Form from "./Form";
-// import ContactList from "./ContactList";
+import ContactListView from "./ContactListView";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AppLayout from "./AppLayout";
 
 const router = createBrowserRouter([
   {
-    element: <App />,
+    path: "/",
+    element: <AppLayout />,
+  },
+  {
+    path: "/contacts",
+    element: <ContactListView />,
   },
 ]);
 
 function App() {
-  // const [contacts, setContacts] = useState([]);
   return <RouterProvider router={router}></RouterProvider>;
 }
 

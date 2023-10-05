@@ -1,3 +1,4 @@
+// import { useState } from "react";
 import { useState } from "react";
 import ContactList from "./ContactList";
 import Form from "./Form";
@@ -10,11 +11,10 @@ function AppLayout() {
       <h1 className="text-2xl font-bold text-slate-200 py-4">Contact Book</h1>
       <Form contacts={contacts} setContacts={setContacts} />
       <ContactList contacts={contacts} setContacts={setContacts} />
-      <Link to="/">
-        <div className="bg-red-500 text-white p-2 rounded"></div>
-        {/* <button className="">
-    Edit Contact
-  </button> */}
+      <Link to="/contacts">
+        <div className="bg-red-500 text-white p-2 rounded mx-auto w-6/12 h-10">
+          <p>Contacts List View</p>
+        </div>
       </Link>
     </div>
   );

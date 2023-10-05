@@ -8,11 +8,25 @@
       "course": "bs-cs"
     },
     {
-      "name": "Bunta",
-      "age": "13",
-      "contactNumber": "123",
-      "id": "44",
+      "name": "Bukubuku chagama",
+      "age": "123",
+      "contactNumber": "888",
+      "id": "2010",
       "course": "123"
+    },
+    {
+      "name": "Leeroy Jenkins",
+      "age": "99",
+      "contactNumber": "123123123",
+      "id": "13",
+      "course": "BS-IT"
+    },
+    {
+      "name": "ross lee",
+      "age": "123",
+      "contactNumber": "555",
+      "id": "12",
+      "course": "bs-ma"
     }
   ]
 }
