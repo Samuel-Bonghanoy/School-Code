@@ -26,19 +26,15 @@ function Form({ contacts, setContacts }) {
     }));
   };
 
-  const handleEdit = (e) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    setEditContact((prevContact) => ({
-      ...prevContact,
-      [name]: value,
-    }));
-  };
+  // const addContact
 
-  const handleAddContact = (e) => {
+  const handleAddContact = async (e) => {
     e.preventDefault();
     if (
       !newContact.id ||
+      !newContact.name ||
+      !newContact.contactNumber ||
+      !newContact.course ||
       contacts.find((contact) => contact.id === newContact.id)
     ) {
       alert("Please provide a unique ID# or check if ID# already exists.");
@@ -53,6 +49,15 @@ function Form({ contacts, setContacts }) {
     }
 
     setContacts([...contacts, newContact]);
+
+    await fetch("http://localhost:9000/contacts", {
+      method: "POST",
+      body: JSON.stringify(newContact),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
     setNewContact({
       name: "",
       age: "",
@@ -62,7 +67,7 @@ function Form({ contacts, setContacts }) {
     });
   };
 
-  const handleEditContact = (e) => {
+  const handleEditContact = async (e) => {
     e.preventDefault();
 
     if (!id) {
@@ -76,6 +81,20 @@ function Form({ contacts, setContacts }) {
     }
 
     const ret = contacts.filter((c) => c.id !== id);
+
+    await fetch(`http://localhost:9000/contacts/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name: editName,
+        age: editAge,
+        contactNumber: editContactNumber,
+        id,
+        course: editCourse,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     setContacts([
       ...ret,
@@ -157,7 +176,7 @@ function Form({ contacts, setContacts }) {
         </button>
       </form>
       {editing && (
-        <div className="absolute top-[25%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[50%] bg-purple-300 w-6/12 text-center mt-5 z-40 pb-3 items-center flex flex-col pt-5">
+        <div className="absolute top-[25%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[52%] bg-gray-300 w-6/12 text-center mt-5 z-40 pb-3 items-center flex flex-col pt-5">
           <h2 className="font-bold mb-2">Edit Contact</h2>
           <form className="flex flex-col space-y-2 w-3/6 ">
             <input

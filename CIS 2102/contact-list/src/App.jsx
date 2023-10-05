@@ -1,17 +1,19 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
-import Form from "./Form";
-import ContactList from "./ContactList";
+// import Form from "./Form";
+// import ContactList from "./ContactList";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    element: <App />,
+  },
+]);
 
 function App() {
-  const [contacts, setContacts] = useState([]);
-  return (
-    <div className="text-center bg-midnight h-screen">
-      <h1 className="text-2xl font-bold text-slate-200 py-4">Contact Book</h1>
-      <Form contacts={contacts} setContacts={setContacts} />
-      <ContactList contacts={contacts} setContacts={setContacts} />
-    </div>
-  );
+  // const [contacts, setContacts] = useState([]);
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;

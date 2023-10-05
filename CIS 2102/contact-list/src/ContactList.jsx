@@ -1,7 +1,21 @@
-import { useState } from "react";
+import { useEffect } from "react";
 
 function ContactList({ contacts, setContacts }) {
-  const handleDeleteContact = (id) => {
+  useEffect(() => {
+    async function getContacts() {
+      const res = await fetch("http://localhost:9000/contacts");
+      const data = await res.json();
+
+      setContacts(data);
+    }
+
+    getContacts();
+  }, [setContacts, contacts]);
+
+  const handleDeleteContact = async (id) => {
+    await fetch(`http://localhost:9000/contacts/${id}`, {
+      method: "DELETE",
+    });
     setContacts((prevContacts) =>
       prevContacts.filter((contact) => contact.id !== id)
     );
@@ -14,7 +28,7 @@ function ContactList({ contacts, setContacts }) {
           return (
             <li
               key={contact.id}
-              className="flex flex-col px-10 py-5 relative bg-green-300 w-fit rounded"
+              className="flex flex-col px-10 py-5 relative bg-green-300 w-fit rounded mt-5"
             >
               <div className="flex flex-col items-start mx-2">
                 <p>
@@ -43,7 +57,7 @@ function ContactList({ contacts, setContacts }) {
           );
         })}
       </ul>
-      )}
+      )
     </>
   );
 }
