@@ -71,6 +71,17 @@ void dealloc(VirtualHeap *VH, LIST *L, int index){
   }
 }
 
+void insertRear(VirtualHeap *VH, LIST *L, char elem){
+  int index = alloc(VH), trav;
+
+  if(index != -1) {
+    for(trav = *L; VH->nodes[trav].link != -1; trav = VH->nodes[trav].link){}
+    VH->nodes[index].data = elem;
+    VH->nodes[index].link = VH->nodes[trav].link;
+    VH->nodes[trav].link = index;
+  }
+}
+
 int main()
 {
   VirtualHeap VH = init();
@@ -86,9 +97,15 @@ int main()
   insertFirst(&VH, &L, 'b');
   displayList(VH, L);
   puts("");
-  dealloc(&VH,&L, 9);
-  insertFirst(&VH, &L, 'j');
+  insertFirst(&VH, &L, 'c');
   displayList(VH, L);
+  puts("");
+  insertFirst(&VH, &L, 'd');
+  displayList(VH, L);
+  puts("");
+  // dealloc(&VH,&L, 9);
+  // insertFirst(&VH, &L, 'j');
+  // displayList(VH, L);
   // printf("%d", L);
   // puts("");
   // insertFirst(&VH, &L, 'c');
