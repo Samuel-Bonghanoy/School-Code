@@ -61,12 +61,14 @@ void insertFirst(VirtualHeap *VH, LIST *L, char elem){
 }
 
 void dealloc(VirtualHeap *VH, LIST *L, int index){
-  
+  int x, trav;
   
   if(*L != -1){
+    for(x = MAX - 1, trav = *L;x > index && trav != -1; x--, trav = VH->nodes[trav].link){}
     
+    }
   }
-}
+
 
 
 int main()
