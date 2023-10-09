@@ -82,6 +82,24 @@ void insertRear(VirtualHeap *VH, LIST *L, char elem){
   }
 }
 
+void insertSorted(VirtualHeap *VH, LIST *L, char elem){
+  int index = alloc(VH), trav;
+
+  if(index != -1){
+    for(trav = *L; trav != -1 && VH->nodes[trav].data < elem; trav = VH->nodes[trav].link){}
+    if(trav == *L){
+      VH->nodes[index].data = elem;
+      VH->nodes[index].link = *L;
+      *L = index;
+    } else {
+      VH->nodes[index].data = elem;
+      VH->nodes[index].link = VH->nodes[trav].link;
+      VH->nodes[trav].link = index;
+    }
+  }
+}
+
+
 int main()
 {
   VirtualHeap VH = init();
@@ -91,16 +109,22 @@ int main()
   displayList(VH, VH.avail); // prints VH->Avail list
   puts("");
 
-  insertFirst(&VH, &L, 'a');
+  insertFirst(&VH, &L, 'e');
   displayList(VH, L);
   puts("");
-  insertFirst(&VH, &L, 'b');
+  insertFirst(&VH, &L, 'd');
   displayList(VH, L);
   puts("");
   insertFirst(&VH, &L, 'c');
   displayList(VH, L);
   puts("");
-  insertFirst(&VH, &L, 'd');
+  insertFirst(&VH, &L, 'b');
+  displayList(VH, L);
+  puts("");
+  // insertRear(&VH, &L, 'a');
+  // displayList(VH, L);
+  // puts("");
+  insertSorted(&VH, &L, 'f');
   displayList(VH, L);
   puts("");
   // dealloc(&VH,&L, 9);
