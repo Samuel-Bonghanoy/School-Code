@@ -64,12 +64,12 @@ void dealloc(VirtualHeap *VH, LIST *L, int index){
   int x, trav;
   
   if(*L != -1){
-    for(x = MAX - 1, trav = *L;x > index && trav != -1; x--, trav = VH->nodes[trav].link){}
-    
-    }
+    for(x = MAX - 1, trav = *L;x > index && VH->nodes[trav].link != -1; x--, trav = VH->nodes[trav].link){}
+    VH->nodes[trav].link = VH->nodes[index].link;
+    VH->nodes[index].link = VH->avail;
+    VH->avail = index;
   }
-
-
+}
 
 int main()
 {
@@ -86,7 +86,7 @@ int main()
   insertFirst(&VH, &L, 'b');
   displayList(VH, L);
   puts("");
-  // dealloc(&VH, 9);
+  dealloc(&VH,&L, 9);
   insertFirst(&VH, &L, 'j');
   displayList(VH, L);
   // printf("%d", L);
