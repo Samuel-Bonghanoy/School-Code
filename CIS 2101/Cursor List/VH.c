@@ -60,6 +60,10 @@ void insertFirst(VirtualHeap *VH, LIST *L, char elem){
   }
 }
 
+void dealloc(VirtualHeap *VH, LIST *L){
+  
+}
+
 
 int main()
 {
