@@ -17,9 +17,12 @@ typedef struct {
 VirtualHeap init() {
   VirtualHeap VH;
   VH.nodes = (Node *)malloc(sizeof(Node));
+  // printf("yes");
 
   int x;
-  for(x = MAX - 1; x >= 0; x++){
+  for(x = MAX - 1; x >= 0; x--){
+    // printf("yes");
+    
     VH.nodes[x].link = x - 1;
   }
 
@@ -27,11 +30,55 @@ VirtualHeap init() {
   return VH;
 }
 
-int alloc(VirtualHeap VH, LIST L)
+void displayList(VirtualHeap VH, LIST L) {
+  int trav;
+  // printf("yes");
+  for (trav = L; trav != -1; trav = VH.nodes[trav].link) {
+    printf("[%d](%c)->", trav, VH.nodes[trav].data);
+  }
+  puts("-1");
+}
+
+int alloc(VirtualHeap* VH){
+  int retval = -1;
+
+  if(VH->avail != -1){
+    retval = VH->avail;
+    VH->avail = VH->nodes[VH->avail].link;
+  }
+
+  return retval;
+}
+
+void insertFirst(VirtualHeap *VH, LIST *L, char elem){
+  int index = alloc(VH);
+
+  if(index != -1){
+    
+  }
+}
 
 
 int main()
 {
-  LIST L = 
+  VirtualHeap VH = init();
+  LIST L = -1;
+  
+  puts("Avail at the start:");
+  displayList(VH, VH.avail); // prints VH->Avail list
+  puts("");
+
+  insertFirst(&VH, &L, 'a');
+  displayList(VH, L);
+  puts("");
+  insertFirst(&VH, &L, 'b');
+  displayList(VH, L);
+  puts("");
+  insertFirst(&VH, &L, 'c');
+  puts("New List L:");
+  displayList(VH, L); // prints L list
+  puts("Avail:");
+  displayList(VH, VH.avail); // prints VH->Avail list
+  puts("");
   return 0;
 }
