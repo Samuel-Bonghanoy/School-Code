@@ -60,8 +60,11 @@ void insertFirst(VirtualHeap *VH, LIST *L, char elem){
   }
 }
 
-void dealloc(VirtualHeap *VH, LIST *L){
+void dealloc(VirtualHeap *VH, LIST *L, int index){
   
+  if(index >= 0 && index < MAX){
+    VH->nodes[*L].link = VH->nodes[index].link;
+  }
 }
 
 
@@ -80,11 +83,16 @@ int main()
   insertFirst(&VH, &L, 'b');
   displayList(VH, L);
   puts("");
-  insertFirst(&VH, &L, 'c');
-  puts("New List L:");
-  displayList(VH, L); // prints L list
-  puts("Avail:");
-  displayList(VH, VH.avail); // prints VH->Avail list
-  puts("");
+  dealloc(&VH, &L);
+  insertFirst(&VH, &L, 'j');
+  displayList(VH, L);
+  // printf("%d", L);
+  // puts("");
+  // insertFirst(&VH, &L, 'c');
+  // puts("New List L:");
+  // displayList(VH, L); // prints L list
+  // puts("Avail:");
+  // displayList(VH, VH.avail); // prints VH->Avail list
+  // puts("");
   return 0;
 }
