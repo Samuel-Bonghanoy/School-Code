@@ -62,8 +62,9 @@ void insertFirst(VirtualHeap *VH, LIST *L, char elem){
 
 void dealloc(VirtualHeap *VH, LIST *L, int index){
   
-  if(index >= 0 && index < MAX){
-    VH->nodes[*L].link = VH->nodes[index].link;
+  
+  if(*L != -1){
+    
   }
 }
 
@@ -83,7 +84,7 @@ int main()
   insertFirst(&VH, &L, 'b');
   displayList(VH, L);
   puts("");
-  dealloc(&VH, &L);
+  // dealloc(&VH, 9);
   insertFirst(&VH, &L, 'j');
   displayList(VH, L);
   // printf("%d", L);
