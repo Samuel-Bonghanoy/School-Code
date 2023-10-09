@@ -54,7 +54,9 @@ void insertFirst(VirtualHeap *VH, LIST *L, char elem){
   int index = alloc(VH);
 
   if(index != -1){
-    
+    VH->nodes[index].data = elem;
+    VH->nodes[index].link = *L;
+    *L = index;
   }
 }
 
