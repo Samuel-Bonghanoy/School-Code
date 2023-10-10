@@ -1,17 +1,27 @@
+import { useState } from "react";
+import { HiCheckCircle } from "react-icons/hi";
+
 function Task({ entry, setTaskList }) {
+  const [mouseOver, setMouseOver] = useState(false);
   return (
-    <li className="flex flex-col  text-slate-800 bg-slate-300 my-2 px-3 py-3 w-full hover:bg-slate-400 hover:scale-[1.03] hover:shadow-slate-400 transition-all rounded-md">
-      <div className="flex items-center">
-        <input
-          onChange={() =>
-            setTaskList((li) => li.filter((task) => task !== entry))
-          }
-          type="checkbox"
-          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+    <li className="flex   text-slate-800 bg-slate-300 my-2 px-3 py-3 w-full hover:bg-slate-400 hover:scale-[1.03] hover:shadow-slate-400 transition-all rounded-md">
+      <button
+        onClick={() => setTaskList((li) => li.filter((task) => task !== entry))}
+        type="checkbox"
+        // className="h-9 rounded-full border-2 border-green-900 focus:ring-2 focus:ring-gray-600"
+      >
+        <HiCheckCircle
+          size="1.5rem"
+          onMouseOver={() => setMouseOver(true)}
+          onMouseOut={() => setMouseOver(false)}
         />
-        <p className="ml-2 font-semibold">{entry}</p>
+      </button>
+      <div className="flexflex-col">
+        <p className="ml-2 font-semibold text-[1.1rem]">{entry}</p>
+        <p className="ml-2 text-[0.75rem] text-green-800 font-thin">
+          due Monday
+        </p>
       </div>
-      <p className="text-sm text-green-800">Due Today</p>
     </li>
   );
 }
