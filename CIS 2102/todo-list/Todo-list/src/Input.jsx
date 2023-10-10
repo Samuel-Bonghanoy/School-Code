@@ -9,7 +9,7 @@ function Input() {
   const [entry, setEntry] = useState({ body: "", date: null });
   const [add, setAdd] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(null);
 
   return (
     <div className="flex items-center gap-2 justify-start ">
