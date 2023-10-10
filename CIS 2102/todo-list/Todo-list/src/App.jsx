@@ -1,50 +1,29 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import List from "./List";
-import styles from "./App.module.css";
-import { useState, useEffect, useRef } from "react";
+import AppLayout from "./AppLayout";
+import { ListProvider } from "./contexts/listContext";
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <List />,
+      },
+      {
+        path: "/task",
+        element: <AppLayout />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [taskList, setTaskList] = useState(["do this shit", "do that shit"]);
-  let entry = "";
-
-  const input = useRef(null);
-
-  useEffect(() => {
-    function callback(e) {
-      if (e.code === "Enter") {
-        if (entry) setTaskList((list) => [...list, entry]);
-        input.current.value = "";
-      }
-    }
-
-    document.addEventListener("keydown", callback);
-
-    return function () {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [setTaskList, entry]);
-
   return (
-    <div className={styles.container}>
-      <div className={styles.input}>
-        <input
-          ref={input}
-          onChange={(e) => {
-            entry = e.target.value;
-            console.log(entry);
-          }}
-          placeholder="Input Task"
-        ></input>
-        <button
-          onClick={() => {
-            if (entry) setTaskList((list) => [...list, entry]);
-            input.value = "";
-          }}
-        >
-          Submit
-        </button>
-      </div>
-      <List entries={taskList} setTaskList={setTaskList} />
-    </div>
+    <ListProvider>
+      <RouterProvider router={router} />
+    </ListProvider>
   );
 }
 

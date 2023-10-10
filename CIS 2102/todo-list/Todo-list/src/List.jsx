@@ -1,10 +1,13 @@
 import Task from "./Task";
+import { useList } from "./contexts/listContext";
 
-function List({ entries, setTaskList }) {
+function List() {
+  const { list, setList } = useList();
+
   return (
-    <ul>
-      {entries.map((entry, i) => (
-        <Task entry={entry} key={i} setTaskList={setTaskList} />
+    <ul className="mx-auto">
+      {list.map((entry, i) => (
+        <Task entry={entry} key={i} setTaskList={setList} />
       ))}
     </ul>
   );
