@@ -7,7 +7,7 @@ function List() {
   return (
     <ul className="">
       {list.map((entry, i) => (
-        <Task entry={entry} key={i} setTaskList={setList} />
+        <Task entry={entry} key={i} setTaskList={setList} identifier={i} />
       ))}
     </ul>
   );
