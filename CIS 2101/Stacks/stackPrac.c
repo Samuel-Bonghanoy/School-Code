@@ -40,7 +40,42 @@ int isFull(Stack s) {
 }
 
 void insertBottom(Stack s, char elem) {
+  Stack temp = init();
+
   if(s->top < MAX - 1) {
-    while(!isEmpty)
+    while(!isEmpty(s)){
+      push(temp, top(s));
+      pop(s);
+    }
+
+    push(s, elem);
+
+    while(!isEmpty(temp)){
+      push(s, top(temp));
+      pop(temp);
+    }
+
+    free(temp);
   }
+}
+
+void displayStack(Stack s){
+  Stack temp = init();
+
+  while(!isEmpty(s)){
+    printf("|%3c%3c\n", top(s), '|');
+    push(temp, top(s));
+    pop(s);
+  }
+
+  while(!isEmpty(temp)){
+    push(s, top(temp));
+    pop(temp);
+  }
+
+  if (isEmpty(s))
+  {
+    puts("|     |");
+  }
+  puts("-------");
 }
