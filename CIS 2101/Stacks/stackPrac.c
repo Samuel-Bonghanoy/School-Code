@@ -28,7 +28,7 @@ void push(Stack s, char elem) {
 }
 
 char top(Stack s){
-  return (s->top != -1 ? s->data[s->top] : '/0');
+  return (s->top != -1 ? s->data[s->top] : '\0');
 }
 
 int isEmpty(Stack s) {
@@ -78,4 +78,18 @@ void displayStack(Stack s){
     puts("|     |");
   }
   puts("-------");
+}
+
+int main()
+{
+  Stack s = init();
+  push(s, 'a');
+  push(s, 'b');
+  push(s, 'c');
+  push(s, 'd');
+  displayStack(s);
+  pop(s);
+  displayStack(s);
+  insertBottom(s, 'f');
+  displayStack(s);  
 }
