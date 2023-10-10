@@ -12,6 +12,7 @@ function Task({ entry, setTaskList }) {
       >
         <HiCheckCircle
           size="1.5rem"
+          color={mouseOver ? "#16a34a" : "black"}
           onMouseOver={() => setMouseOver(true)}
           onMouseOut={() => setMouseOver(false)}
         />
