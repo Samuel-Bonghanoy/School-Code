@@ -21,7 +21,7 @@ int main(void) {
   insert(dict, 'E');
   insert(dict, 'F');
   insert(dict, 'G');
-  // insert(dict, 'H');
+  insert(dict, 'H');
   printDictionary(dict);
 }
 
