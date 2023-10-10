@@ -3,10 +3,10 @@ import Input from "./Input";
 
 function AppLayout() {
   return (
-    <div className="w-screen bg-midnight">
-      <div className="bg-midnight h-screen w-fit flex flex-col font-sans mx-auto ">
-        <Input />
+    <div className="w-screen h-screen bg-midnight">
+      <div className="bg-midnight w-6/12 flex flex-col font-sans mx-auto pt-10 ">
         <Outlet />
+        <Input />
       </div>
     </div>
   );

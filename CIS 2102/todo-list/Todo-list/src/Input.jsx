@@ -9,7 +9,7 @@ function Input() {
   const [mouseOver, setMouseOver] = useState(false);
 
   return (
-    <div className="pt-10 flex gap-2 items-center justify-start">
+    <div className="flex gap-2 items-center justify-start">
       {add ? (
         <input
           className="w-96 py-2 px-2 active:border-none focus:border-none"
@@ -19,7 +19,7 @@ function Input() {
           placeholder="Input Task"
         ></input>
       ) : (
-        <h2 className="text-gray-100 text-2xl">Add a task</h2>
+        <h2 className="text-gray-100 text-xl">Add a task</h2>
       )}
       <button
         className=" py-2 px-2 h-9"

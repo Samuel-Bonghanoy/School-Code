@@ -5,7 +5,7 @@ function List() {
   const { list, setList } = useList();
 
   return (
-    <ul className="mx-auto">
+    <ul className="">
       {list.map((entry, i) => (
         <Task entry={entry} key={i} setTaskList={setList} />
       ))}
