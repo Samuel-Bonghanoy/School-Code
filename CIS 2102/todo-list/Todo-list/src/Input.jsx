@@ -9,7 +9,7 @@ function Input() {
   const [mouseOver, setMouseOver] = useState(false);
 
   return (
-    <div className="mx-auto pt-10 flex gap-2 items-center">
+    <div className="pt-10 flex gap-2 items-center justify-start">
       {add ? (
         <input
           className="w-96 py-2 px-2 active:border-none focus:border-none"
@@ -26,13 +26,14 @@ function Input() {
         onClick={() => {
           if (entry) setList((list) => [...list, entry]);
           setEntry("");
+          setAdd(true);
         }}
       >
         <FiPlusCircle
           size="1.2rem"
-          color="white"
-          onMouseOver={({ target }) => (target.style.color = "green")}
-          onMouseOut={({ target }) => (target.style.color = "white")}
+          color={mouseOver ? "#84cc16" : "white"}
+          onMouseOver={() => setMouseOver(true)}
+          onMouseOut={() => setMouseOver(false)}
         />
       </button>
     </div>
