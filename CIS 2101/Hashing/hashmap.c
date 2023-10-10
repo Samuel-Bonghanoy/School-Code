@@ -16,7 +16,7 @@ int main(void) {
   init(dict);
   insert(dict, 'E');
   insert(dict, 'O');
-  // insert(dict, 'C');
+  insert(dict, 'C');
   // insert(dict, 'D');
   insert(dict, 'E');
   // insert(dict, 'F');
