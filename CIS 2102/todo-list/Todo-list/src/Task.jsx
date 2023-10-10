@@ -7,7 +7,7 @@ function Task({ entry, setTaskList, identifier }) {
 
   return (
     <Link to={`/task/${identifier}`}>
-      <li className="flex   text-slate-800 bg-slate-300 my-2 px-3 py-3 w-full hover:bg-slate-400 hover:scale-[1.03] hover:shadow-slate-400 transition-all rounded-md">
+      <li className="flex text-slate-800 bg-slate-300 my-2 px-3 py-3 w-full hover:bg-slate-400 hover:scale-[1.03] hover:shadow-slate-400 transition-all rounded-md">
         <button
           onClick={() =>
             setTaskList((li) => li.filter((task) => task !== entry))
