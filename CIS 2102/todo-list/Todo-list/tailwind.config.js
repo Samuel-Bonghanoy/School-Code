@@ -7,6 +7,9 @@ export default {
         midnight: "#202124",
       },
     },
+    fontFamily: {
+      sans: "Poppins, monospace",
+    },
   },
   plugins: [],
 };
