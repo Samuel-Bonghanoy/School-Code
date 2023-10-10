@@ -4,7 +4,7 @@ import { useList } from "./contexts/listContext";
 function Item() {
   const { id } = useParams();
   const { list } = useList();
-  // console.log(list, id);
+  // console.log(list, id, flag);
   const navigate = useNavigate();
 
   return (
