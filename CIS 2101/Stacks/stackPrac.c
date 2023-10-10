@@ -39,3 +39,8 @@ int isFull(Stack s) {
   return (s->top > MAX - 1) ? 1 : 0;
 }
 
+void insertBottom(Stack s, char elem) {
+  if(s->top < MAX - 1) {
+    while(!isEmpty)
+  }
+}
