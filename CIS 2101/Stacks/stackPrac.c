@@ -36,5 +36,6 @@ int isEmpty(Stack s) {
 }
 
 int isFull(Stack s) {
-  
+  return (s->top > MAX - 1) ? 1 : 0;
 }
+
