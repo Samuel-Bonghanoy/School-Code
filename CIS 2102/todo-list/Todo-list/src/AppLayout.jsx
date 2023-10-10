@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Input from "./Input";
+// import Input from "./Input";
 
 function AppLayout() {
   return (
@@ -9,7 +9,6 @@ function AppLayout() {
           📃 TO-DO LIST
         </h1>
         <Outlet />
-        <Input />
       </div>
     </div>
   );

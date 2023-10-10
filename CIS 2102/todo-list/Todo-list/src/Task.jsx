@@ -6,7 +6,7 @@ function Task({ entry, setTaskList, identifier }) {
   const [mouseOver, setMouseOver] = useState(false);
 
   return (
-    <Link to={`/tasks/${identifier}`}>
+    <Link to={`/task/${identifier}`}>
       <li className="flex   text-slate-800 bg-slate-300 my-2 px-3 py-3 w-full hover:bg-slate-400 hover:scale-[1.03] hover:shadow-slate-400 transition-all rounded-md">
         <button
           onClick={() =>
@@ -22,7 +22,7 @@ function Task({ entry, setTaskList, identifier }) {
             onMouseOut={() => setMouseOver(false)}
           />
         </button>
-        <div className="flexflex-col">
+        <div className="flex flex-col">
           <p className="ml-2 font-semibold text-[1.1rem]">{entry}</p>
           <p className="ml-2 text-[0.75rem] text-green-800 font-thin">
             due Monday

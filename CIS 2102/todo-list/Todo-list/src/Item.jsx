@@ -6,8 +6,8 @@ function Item() {
   const { list } = useList;
 
   return (
-    <div className="flexflex-col">
-      <p className="ml-2 font-semibold text-[1.1rem]">{list[id]}</p>
+    <div className="flex flex-col">
+      <p className="ml-2 font-semibold text-[1.1rem]">yada</p>
       <p className="ml-2 text-[0.75rem] text-green-800 font-thin">due Monday</p>
     </div>
   );
