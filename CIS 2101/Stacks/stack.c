@@ -19,9 +19,7 @@ bool isFull(Stack s);
 Stack init(void);
 void displayStack(Stack s);
 
-/**
- * @brief Adds the specified element to the top of the stack.
- */
+
 void push(Stack s, char elem)
 {
   if (s->top < MAX - 1)
@@ -30,9 +28,7 @@ void push(Stack s, char elem)
   }
 }
 
-/**
- * @brief Inserts the specified element to the bottom of the stack.
- */
+
 void insertBottom(Stack s, char elem)
 {
   if (!isFull(s))
@@ -56,9 +52,7 @@ void insertBottom(Stack s, char elem)
     free(temp);
   }
 }
-/**
- * @brief Removes the element at the top of the stack.
- */
+
 void pop(Stack s)
 {
   if (s->top >= 0)
@@ -67,33 +61,25 @@ void pop(Stack s)
   }
 }
 
-/**
- * @brief Returns the element at the top of the stack, otherwise (-1) if the stack is empty.
- */
+
 char top(Stack s)
 {
   return (!isEmpty(s) ? s->data[s->top] : '\0');
 }
 
-/**
- * @brief Returns true (1) if the stack is empty, otherwise false (0).
- */
+
 bool isEmpty(Stack s)
 {
   return s->top == -1;
 }
 
-/**
- * @brief Returns true (1) if the stack is full, otherwise false (0).
- */
+
 bool isFull(Stack s)
 {
   return s->top >= MAX - 1;
 }
 
-/**
- * @brief Returns a new instance of a Stack.
- */
+
 Stack init(void)
 {
   Stack s = (Stack)malloc(sizeof(struct Stack));
