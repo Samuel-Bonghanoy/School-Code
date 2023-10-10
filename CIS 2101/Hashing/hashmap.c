@@ -20,7 +20,7 @@ int main(void) {
   // insert(dict, 'D');
   insert(dict, 'E');
   insert(dict, 'F');
-  // insert(dict, 'G');
+  insert(dict, 'G');
   // insert(dict, 'H');
   printDictionary(dict);
 }
