@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-#define MAX 4
+#define MAX 10
 #define EMPTY '!'
 #define DELETED '@'
 
@@ -21,19 +21,19 @@ int main()
 
     initDic(&myDic);
 
-    insert(&myDic, 'A');
-    insert(&myDic, 'B');
-    insert(&myDic, 'C');
-    insert(&myDic, 'D');
-    insert(&myDic, 'E');
+    // insert(&myDic, 'A');
+    // insert(&myDic, 'B');
+    // insert(&myDic, 'C');
+    // insert(&myDic, 'D');
+    insert(&myDic, 'Z');
     //printf("%d", isMember(myDic, 'C'));
     //printf(" %d", isMember(myDic, 'M'));
     displayDic(myDic);
 
-    printf("\n");
-    delete(&myDic, 'B');
-    delete(&myDic, 'A');
-    displayDic(myDic);
+    // printf("\n");
+    // delete(&myDic, 'B');
+    // delete(&myDic, 'A');
+    // displayDic(myDic);
     return 0;
 }
 
@@ -72,12 +72,13 @@ void displayDic(Dictionary D) {
 
 void insert(Dictionary *D, char elem) {
     int hashValue = hash(elem), x;
+    printf("\nTHIS IS THE HASHVAL ==== %d =====\n", hashValue);
 
     if ((*D)[hashValue] == EMPTY) {
         (*D)[hashValue] = elem;
     } else {
         for (x = 0; x != MAX && ((*D)[hashValue] != EMPTY && (*D)[hashValue] != DELETED); hashValue = (hashValue + 1) % MAX, ++x) {
-            printf("%d", hashValue);
+            printf("%d------------\n", hashValue);
         }
         
         if ((*D)[hashValue] == EMPTY || (*D)[hashValue] == DELETED) {   
