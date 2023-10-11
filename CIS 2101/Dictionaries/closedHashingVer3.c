@@ -86,7 +86,7 @@ void displayDict(virtualHeap VH) {
     
     for (x = 0; x != MAX / 2; ++x) {
         printf("[%d] => ", x);
-        for (trav = x; VH.Dictionary[trav].next != -1 ^ VH.Dictionary[trav].data != EMPTY; trav = VH.Dictionary[trav].next) {
+        for (trav = x; VH.Dictionary[trav].next != -1 && VH.Dictionary[trav].data != EMPTY; trav = VH.Dictionary[trav].next) {
             printf("%c", VH.Dictionary[trav].data);
         }
         printf("\n");
@@ -95,7 +95,7 @@ void displayDict(virtualHeap VH) {
 
 void insert(virtualHeap *VH, char elem) {
     int hashValue = hash(elem);
-    printf("%d", hashValue);
+    // printf("%d", hashValue);
 
     if (VH->Dictionary[hashValue].data == EMPTY || VH->Dictionary[hashValue].data == DELETED) {
         VH->Dictionary[hashValue].data = elem;
