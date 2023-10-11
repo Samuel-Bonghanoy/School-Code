@@ -8,9 +8,9 @@ function ContactList({ contacts, setContacts }) {
 
       setContacts(data);
     }
-
+    console.log("yes");
     getContacts();
-  }, [setContacts, contacts]);
+  }, [setContacts]);
 
   const handleDeleteContact = async (id) => {
     await fetch(`http://localhost:9000/contacts/${id}`, {

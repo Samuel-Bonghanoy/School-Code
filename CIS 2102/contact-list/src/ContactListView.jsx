@@ -11,7 +11,7 @@ function ContactList() {
 
       setContacts(data);
     }
-
+    console.log("yesd");
     getContacts();
   }, [setContacts, contacts]);
 
@@ -19,6 +19,8 @@ function ContactList() {
     await fetch(`http://localhost:9000/contacts/${id}`, {
       method: "DELETE",
     });
+
+    console.log("yes");
     setContacts((prevContacts) =>
       prevContacts.filter((contact) => contact.id !== id)
     );
