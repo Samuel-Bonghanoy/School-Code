@@ -17,6 +17,16 @@ void displayHeader();
 void displayStudent(Studtype S);
 void readFile();
 
+void displayStudent(Studtype S) {
+  printf("%-10d", S.ID);
+  printf("%-16s", S.name.LN);
+  printf("%-24s", S.name.FN);
+  printf("%-3c", S.name.MI);
+  printf("%-8s", S.course);
+  printf("%5d", S.yrLevel);
+  printf("\n");
+}
+
 void displayHeader() {
   printf("\n\n");
   printf("%-10s", "ID No.");
@@ -42,11 +52,7 @@ int main()
 
   displayHeader();
   while(fread(&buffer, sizeof(Studtype), 1, fp) != 0){
-    printf("%d\t\t", buffer.ID);
-    printf("%s\t\t", buffer.name);
-    // printf("%s\t\t", buffer.course);
-    // printf("%d\t\t", buffer.yrLevel);
-    // printf("\n");
+    displayStudent(buffer);
   }
 
   fclose(fp);
