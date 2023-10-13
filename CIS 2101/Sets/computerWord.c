@@ -36,6 +36,7 @@ int main()
     //display updated set
     displayBits(mySet);
     displayElem(mySet);
+    deleteElem(&mySet, 2);
     displayIndices(mySet);
     return 0;
 }
@@ -78,6 +79,8 @@ void insertElem(SET *A, int elem) {
 }
 
 void deleteElem(SET *A, int elem) {
+    printf("DELETED");
+    // printf("%d",1 << elem);
     *A = (*A)&~(1 << elem);
 }
 
