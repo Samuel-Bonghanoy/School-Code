@@ -15,34 +15,33 @@ typedef struct {
  } VirtualHeap;
 
 VirtualHeap init() {
-  VirtualHeap VH;
-  VH.nodes = (Node *)malloc(sizeof(Node));
-  // printf("yes");
-
   int x;
+
+  VirtualHeap VH;
+
+  VH.nodes = (Node *)malloc(sizeof(struct node)) ;
+
   for(x = MAX - 1; x >= 0; x--){
-    // printf("yes");
-    
     VH.nodes[x].link = x - 1;
   }
 
   VH.avail = MAX - 1;
+
   return VH;
 }
 
 void displayList(VirtualHeap VH, LIST L) {
   int trav;
-  // printf("yes");
-  for (trav = L; trav != -1; trav = VH.nodes[trav].link) {
+
+  for(trav = L; trav != -1; trav = VH.nodes[trav].link) {
     printf("[%d](%c)->", trav, VH.nodes[trav].data);
   }
-  puts("-1");
 }
 
 int alloc(VirtualHeap* VH){
   int retval = -1;
 
-  if(VH->avail != -1){
+  if(VH->avail != -1) {
     retval = VH->avail;
     VH->avail = VH->nodes[VH->avail].link;
   }
@@ -86,8 +85,8 @@ void insertSorted(VirtualHeap *VH, LIST *L, char elem){
   int index = alloc(VH), trav;
 
   if(index != -1){
-    for(trav = *L; trav != -1 && VH->nodes[trav].data < elem; trav = VH->nodes[trav].link){}
-    if(trav == *L){
+    for(trav = *L; trav != -1 && elem > VH->nodes[trav].data; trav = VH->nodes[trav].link){}
+    if(trav == *L) {
       VH->nodes[index].data = elem;
       VH->nodes[index].link = *L;
       *L = index;
@@ -98,7 +97,7 @@ void insertSorted(VirtualHeap *VH, LIST *L, char elem){
     }
   }
 }
-
+  
 
 int main()
 {
