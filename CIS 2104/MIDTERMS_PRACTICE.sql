@@ -102,3 +102,41 @@ GROUP BY
 ORDER BY
     like_count
 DESC;
+
+-- AVERAGE # OF TIMES A USER POSTS
+SELECT (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users);
+
+-- NUMBER OF TIMES EACH USER HAS POSTED
+SELECT username, COUNT(*) AS times_posted FROM users INNER JOIN photos ON photos.user_id = users.id GROUP BY username;\
+
+-- TOP TAGS USED
+
+SELECT
+    tag_name,
+    COUNT(*) AS occurences
+FROM
+    tags
+INNER JOIN photo_tags ON photo_tags.tag_id = tags.id
+GROUP BY
+    tag_name
+ORDER BY
+    occurences
+DESC
+    ;
+
+-- FIND BOTS THAT HAVE LIKED EVERY PHOTO
+SELECT
+    username,
+    COUNT(*) AS num_of_liked_posts
+FROM
+    users
+INNER JOIN likes ON users.id = likes.user_id
+GROUP BY
+    username
+HAVING
+    num_of_liked_posts =(
+SELECT
+    COUNT(*)
+FROM
+    photos
+);
