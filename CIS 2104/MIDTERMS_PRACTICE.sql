@@ -86,3 +86,19 @@ FROM
 LEFT JOIN photos ON users.id = photos.user_id
 WHERE
     photos.id IS NULL;
+
+-- POST WITH MOST LIKES --
+
+SELECT
+    username,
+    image_url,
+    COUNT(*) AS like_count
+FROM
+    photos
+INNER JOIN likes ON likes.photo_id = photos.id
+INNER JOIN users ON photos.user_id = users.id
+GROUP BY
+    photos.image_url
+ORDER BY
+    like_count
+DESC;
