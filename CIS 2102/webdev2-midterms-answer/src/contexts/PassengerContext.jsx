@@ -1,4 +1,3 @@
-
 import { createContext, useState, useEffect, useContext } from "react";
 
 const PassengerContext = createContext();
@@ -11,15 +10,19 @@ function PassengerProvider({ children }) {
   useEffect(() => {
     async function fetchItems() {
       try {
-       const passengers = await fetch("https://my-json-server.typicode.com/troy1129/jsonplaceholder/passengers")
-       const passengerData = await passengers.json()
-       setPassengers(passengerData);
+        const passengers = await fetch(
+          "https://my-json-server.typicode.com/troy1129/jsonplaceholder/passengers"
+        );
+        const passengerData = await passengers.json();
+        setPassengers(passengerData);
 
-       const destinations = await fetch("https://my-json-server.typicode.com/troy1129/jsonplaceholder/destinations")
-       const destinationData = await destinations.json()
-       setDestinations(destinationData);
+        const destinations = await fetch(
+          "https://my-json-server.typicode.com/troy1129/jsonplaceholder/destinations"
+        );
+        const destinationData = await destinations.json();
+        setDestinations(destinationData);
 
-       setIsLoading(false); 
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
         setIsLoading(false);
@@ -29,9 +32,11 @@ function PassengerProvider({ children }) {
     fetchItems();
   }, []);
 
-//   console.log(passengers, destinations)
+  //   console.log(passengers, destinations)
   return (
-    <PassengerContext.Provider value={{ passengers, setPassengers, destinations}}>
+    <PassengerContext.Provider
+      value={{ passengers, setPassengers, destinations }}
+    >
       {children}
     </PassengerContext.Provider>
   );
