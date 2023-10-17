@@ -63,3 +63,8 @@ CREATE TABLE photo_tags (
     PRIMARY KEY(photo_id, tag_id)
 );
 
+-- FINDING 5 OLDEST USERS
+
+SELECT * FROM users; -- all
+
+SELECT * FROM users ORDER BY created_at LIMIT 5;
