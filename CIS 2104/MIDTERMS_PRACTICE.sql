@@ -72,8 +72,8 @@ SELECT * FROM users ORDER BY created_at LIMIT 5;
 -- MOST POPULAR REGISTRATION DATE
 
 SELECT 
-    username,
     DAYNAME(created_at) AS day,
-    COUNT(*)
+    COUNT(*) AS total
 FROM users 
-GROUP BY day;
+	GROUP by day
+    ORDER BY total DESC;
