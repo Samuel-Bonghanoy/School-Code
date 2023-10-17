@@ -68,3 +68,12 @@ CREATE TABLE photo_tags (
 SELECT * FROM users; -- all
 
 SELECT * FROM users ORDER BY created_at LIMIT 5;
+
+-- MOST POPULAR REGISTRATION DATE
+
+SELECT 
+    username,
+    DAYNAME(created_at) AS day,
+    COUNT(*)
+FROM users 
+GROUP BY day;
