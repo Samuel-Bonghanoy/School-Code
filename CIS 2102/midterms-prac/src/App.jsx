@@ -11,7 +11,7 @@ import { Button, ButtonGroup, Fab } from "@mui/material";
 function App() {
   return (
     <div
-      className="bg-slate-400 h-screen overflow-y-auto 20"
+      className="bg-slate-900 h-screen overflow-y-auto 20"
       style={{ height: "120vh" }}
     >
       <p className="">yes</p>
