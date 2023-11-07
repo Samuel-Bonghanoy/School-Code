@@ -1,10 +1,3 @@
-/* * * * * * * * * * * * * * * * * * 
-* AUTHOR: MODESTO, MARY CHEVEL P.   *
-* SCHOOL YEAR: 2023 - 2024          *
-* DSA PROF: MA'AM PINEAPPLE         *
-* DATE: NOVEMBER 1, 2023            *
-* * * * * * * * * * * * * * * * * */
-
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 10
