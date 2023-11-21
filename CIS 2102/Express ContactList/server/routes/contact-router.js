@@ -13,10 +13,10 @@ router.post('/addPerson', (req, res) => {
       [id, name, age, course],
     );
 
-    return res.status(200).json({ message: 'Person inserted successfully' });
+    return res.status(200);
   } catch (err) {
     console.error('Error:', err);
-    return res.status(500).json({ error: 'Unsuccessful insert' });
+    return res.status(500);
   }
 });
 
@@ -26,10 +26,10 @@ router.delete('/deletePerson/:id', (req, res) => {
 
     connection.query('DELETE FROM persons WHERE id = ?', [id]);
 
-    return res.status(200).json({ message: 'Person deleted successfully' });
+    return res.status(200);
   } catch (err) {
     console.error('Error:', err);
-    return res.status(500).json({ error: 'Unsuccessful deletion' });
+    return res.status(500);
   }
 });
 
@@ -43,10 +43,10 @@ router.put('/updatePerson/:id', (req, res) => {
       [name, age, course, id],
     );
 
-    return res.status(200).json({ message: 'Person updated successfully' });
+    return res.status(200);
   } catch (err) {
     console.error('Error:', err);
-    return res.status(500).json({ error: 'Unsuccessful update' });
+    return res.status(500);
   }
 });
 
